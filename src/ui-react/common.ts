@@ -54,11 +54,11 @@ const useThing = <
   id: Id | undefined,
   offset: number,
 ): Thing | undefined => {
-  const thingsAndThingsById = useContext(Context);
+  const contextValue = useContext(Context);
   return (
     isUndefined(id)
-      ? thingsAndThingsById[offset]
-      : objGet(thingsAndThingsById[offset + 1] as IdObj<Thing>, id)
+      ? contextValue[offset]
+      : objGet(contextValue[offset + 1] as IdObj<Thing>, id)
   ) as Thing;
 };
 
