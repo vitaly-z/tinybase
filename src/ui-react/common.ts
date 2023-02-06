@@ -75,10 +75,9 @@ const useThingOrThingId = <
   offset: number,
 ): Thing | undefined => {
   const thing = useThing(thingOrThingId as Id, offset);
-  if (isUndefined(thingOrThingId) || isString(thingOrThingId)) {
-    return thing as Thing | undefined;
-  }
-  return thingOrThingId as Thing;
+  return isUndefined(thingOrThingId) || isString(thingOrThingId)
+    ? (thing as Thing | undefined)
+    : (thingOrThingId as Thing);
 };
 
 export const useStore: typeof useStoreDecl = (id?: Id): Store | undefined =>
