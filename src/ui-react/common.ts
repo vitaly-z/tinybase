@@ -58,7 +58,9 @@ const useThing = <
   return (
     isUndefined(id)
       ? contextValue[offset]
-      : objGet(contextValue[offset + 1] as IdObj<Thing>, id)
+      : isString(id)
+      ? objGet(contextValue[offset + 1] as IdObj<Thing>, id)
+      : id
   ) as Thing;
 };
 
